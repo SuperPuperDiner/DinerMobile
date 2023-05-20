@@ -20,7 +20,7 @@ interface HomeComponent {
         fun create(
             appComponent: AppComponent,
             @BindsInstance
-            messengerFragment: HomeFragment
+            homeFragment: HomeFragment
         ): HomeComponent
     }
 }

@@ -1,7 +1,9 @@
 package ru.nsu.group20211.dinermobile.di
 
+import android.content.Context
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
+import dagger.BindsInstance
 import dagger.Component
 import ru.nsu.group20211.dinermobile.di.app_modules.BottomNavigation
 import ru.nsu.group20211.dinermobile.di.app_modules.GlobalNavigation
@@ -26,9 +28,11 @@ interface AppComponent {
     @GlobalNavigation
     fun globalRouter(): Router
 
-    @BottomNavigation
-    fun bottomNavigatorHolder(): NavigatorHolder
-
-    @BottomNavigation
-    fun bottomRouter(): Router
+    @Component.Factory
+    interface Factory {
+        fun create(
+            @BindsInstance
+            context: Context
+        ): AppComponent
+    }
 }

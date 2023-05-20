@@ -18,7 +18,6 @@ annotation class BottomNavigation
 @Module(
     includes = [
         GlobalNavigationModule::class,
-        BottomNavigationModule::class
     ]
 )
 class NavigationModule
@@ -42,21 +41,3 @@ class GlobalNavigationModule {
     }
 }
 
-@Module
-class BottomNavigationModule {
-    private val globalCicerone: Cicerone<Router> = Cicerone.create()
-
-    @Provides
-    @Singleton
-    @BottomNavigation
-    fun provideRouter(): Router {
-        return globalCicerone.router
-    }
-
-    @Provides
-    @Singleton
-    @BottomNavigation
-    fun provideNavigatorHolder(): NavigatorHolder {
-        return globalCicerone.getNavigatorHolder()
-    }
-}
